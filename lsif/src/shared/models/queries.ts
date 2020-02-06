@@ -61,7 +61,7 @@ export function lineageWithDumps(limit: number = MAX_TRAVERSAL_LIMIT): string {
         ),
         -- Correlate commits to dumps and filter out commits without LSIF data
         lineage_with_dumps AS (
-            SELECT a.*, d.root, d.id as dump_id FROM limited_lineage a
+            SELECT a.*, d.root, d.extensions, d.id as dump_id FROM limited_lineage a
             JOIN lsif_dumps d ON d.repository_id = a.repository_id AND d."commit" = a."commit"
         )
     `

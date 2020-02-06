@@ -164,7 +164,7 @@ export class DumpManager {
                 ${lineageWithDumps()}
 
                 SELECT d.dump_id FROM lineage_with_dumps d
-                WHERE $3 LIKE (d.root || '%')
+                WHERE $3 LIKE (d.root || '%') AND $3 LIKE ANY (SELECT '%' || ext FROM unnest(d.extensions) as ext)
                 ORDER BY d.n LIMIT 1
             `
 
