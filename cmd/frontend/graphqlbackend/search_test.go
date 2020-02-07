@@ -15,6 +15,13 @@ import (
 	"github.com/sourcegraph/sourcegraph/internal/vcs/git"
 )
 
+// TestSearch_authzPostFilter tests the validity of search results when authzPostFilter is true.
+//
+// 🚨 SECURITY: this test ensure the correctness of permissions with authzPostFilter is true.
+func TestSearch_authzPostFilter(t *testing.T) {
+	// >>> Mock doResultsAttempt?
+}
+
 func TestSearch(t *testing.T) {
 	type Results struct {
 		Results     []interface{}
